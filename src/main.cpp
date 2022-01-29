@@ -30,22 +30,33 @@ void getResult(Function *f) {
 int main(int argc, const char *argv[]) {
     task();
     Function *f;
-    double a, b;
+    double a, b, p;
     cout << "1) ellipse" << endl;
     cout << "2) parabola" << endl;
     cout << "3) hyperbola" << endl;
     cout << "Введите номер функции (int): ";
     char ch;
     cin >> ch;
+    if (ch == 2) {
+
+    }
     switch (ch)
     {
         case '1': f = new Ellipse; break;
-        case '2': f = new Parabola; break;
-        case '3': f = new Hyperbola; break;
+        case '2':
+            f = new Parabola;
+            cout << "Введите число (double) \"p\": " << endl;
+            cin >> p;
+            f->setParams(p);
+        break;
+        case '3':
+            f = new Hyperbola;
+            cout << "Введите два числа (double), первое \"a\", второе \"b\": ";
+            cin >> a >> b;
+            f->setParams(a, b);
+            break;
     }
-    cout << "Введите два числа (double), первое \"a\", второе \"b\": ";
-    cin >> a >> b;
-    f->setParams(a, b);
+
     cout << "Введите аргумент \"x\": ";
     getResult(f);
     cin.get();

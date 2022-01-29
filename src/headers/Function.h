@@ -11,12 +11,15 @@ using namespace std;
 class Function
 {
 protected:
-    double a, b;
+    double a, b, p;
 public:
     virtual string evaluate(double x) = 0;
     void setParams(double a, double b) {
         this->a = a;
         this->b = b;
+    }
+    void setParams(double p) {
+        this->p = p;
     }
 };
 

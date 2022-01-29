@@ -6,11 +6,13 @@
 class Ellipse : public Function
 {
 public:
-    double evaluate(double x)
+    string evaluate(double x)
     {
-        double y = b * sqrt(1 - pow(x, 2) / pow(a, 2));
-        double *zero =  new double[] { 0 };
-        double *res =  new double[] { y, -y };
-        return sqrt(a - x * x * b) +c; //y == 0 ? zero : res;
+        double y;
+        if (-a > x || x < a ) {
+            y = sqrt((b * b) - b * b * x * x / (a * a));
+        } else throw "для элипса x должен находиться в диапазоне -a < x < a!";
+
+        return "(y1=" + to_string(y) + ", y2=" + to_string(-y) + ")";
     }
 };

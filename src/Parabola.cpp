@@ -6,8 +6,8 @@
 class Parabola: public Function
 {
 public:
-    double evaluate(double x)
+    string evaluate(double x)
     {
-        return  a * x * x + b * x + c;
+        return  "";
     }
 };

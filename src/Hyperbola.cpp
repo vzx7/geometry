@@ -7,8 +7,8 @@
 class Hyperbola : public Function
 {
 public:
-    double evaluate(double x)
+    string evaluate(double x)
     {
-        return a / (x - b) +c;
+        return "";
     }
 };

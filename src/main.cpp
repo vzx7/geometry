@@ -1,10 +1,11 @@
 //
 // Created by zx on 1/28/22.
 //
-
 #include "Ellipse.cpp"
 #include "Parabola.cpp"
 #include "Hyperbola.cpp"
+
+
 
 void task() {
     cout << "Создать абстрактный класс Function (функция) с виртуальными методами вычисления значения функции y = f(x)\n"
@@ -29,6 +30,7 @@ void getResult(Function *f) {
 
 int main(int argc, const char *argv[]) {
     task();
+    int count;
     Function *f;
     double a, b, p;
     cout << "1) ellipse" << endl;
@@ -37,12 +39,15 @@ int main(int argc, const char *argv[]) {
     cout << "Введите номер функции (int): ";
     char ch;
     cin >> ch;
-    if (ch == 2) {
 
-    }
     switch (ch)
     {
-        case '1': f = new Ellipse; break;
+        case '1':
+            f = new Ellipse;
+            cout << "Введите два числа (double), первое \"a\", второе \"b\": ";
+            cin >> a >> b;
+            f->setParams(a, b);
+            break;
         case '2':
             f = new Parabola;
             cout << "Введите число (double) \"p\": " << endl;

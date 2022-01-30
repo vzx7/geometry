@@ -13,6 +13,7 @@ class Function
 protected:
     double a, b, p;
 public:
+    Function() {};
     virtual string evaluate(double x) = 0;
     void setParams(double a, double b) {
         this->a = a;

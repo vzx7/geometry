@@ -4,6 +4,7 @@
 #include "Ellipse.cpp"
 #include "Parabola.cpp"
 #include "Hyperbola.cpp"
+#include "Series.cpp"
 
 
 
@@ -15,7 +16,10 @@ void task() {
             "в которой будут использоваться все методы классов.\n" << endl;
 }
 
-void getResult(Function *f) {
+void getResult(Function *f, bool isFirst) {
+    if (isFirst) {
+        cout << "Введите аргумент \"x\": ";
+    }
     int x;
     cin >> x;
     string res;
@@ -24,14 +28,12 @@ void getResult(Function *f) {
         cout << "f(" << x << ")=" << res << endl;
     } catch (char const *msg) {
         cerr << "\n" << msg << "\n" << endl;
-        getResult(f);
+        getResult(f, false);
     }
 };
 
 int main(int argc, const char *argv[]) {
     task();
-    int count;
-    Function *f;
     double a, b, p;
     cout << "1) ellipse" << endl;
     cout << "2) parabola" << endl;
@@ -39,32 +41,42 @@ int main(int argc, const char *argv[]) {
     cout << "Введите номер функции (int): ";
     char ch;
     cin >> ch;
+    Series series;
 
     switch (ch)
     {
-        case '1':
-            f = new Ellipse;
+        case '1': {
+            Ellipse elipse;
             cout << "Введите два числа (double), первое \"a\", второе \"b\": ";
             cin >> a >> b;
-            f->setParams(a, b);
+            elipse.setParams(a, b);
+            getResult(&elipse, true);
+           series.ellipseList.push_back(elipse);
+        }
             break;
-        case '2':
-            f = new Parabola;
+        case '2': {
+            Parabola parabola;
             cout << "Введите число (double) \"p\": " << endl;
             cin >> p;
-            f->setParams(p);
+            parabola.setParams(p);
+            getResult(&parabola, true);
+            series.parabolaList.push_back(parabola);
+        }
         break;
-        case '3':
-            f = new Hyperbola;
+        case '3': {
+            Hyperbola hyperbola;
             cout << "Введите два числа (double), первое \"a\", второе \"b\": ";
             cin >> a >> b;
-            f->setParams(a, b);
+            hyperbola.setParams(a, b);
+            getResult(&hyperbola, true);
+            series.hyperbolaList.push_back(hyperbola);
+        }
             break;
     }
 
-    cout << "Введите аргумент \"x\": ";
-    getResult(f);
+    series.showAllParams();
+    series.showParamsByType(PARABOLA);
     cin.get();
-    delete f;
+
     return 0;
 }

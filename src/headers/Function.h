@@ -11,10 +11,11 @@ using namespace std;
 class Function
 {
 protected:
-    double a, b, p;
+    double a, b, p, _x, _y;
 public:
     Function() {};
     virtual string evaluate(double x) = 0;
+    virtual void showParams() = 0;
     void setParams(double a, double b) {
         this->a = a;
         this->b = b;
